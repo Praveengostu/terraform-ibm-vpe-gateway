@@ -69,6 +69,7 @@ variable "endpoint_ip_list" {
       subnet_id    = string # subnet id
       gateway_name = string # gateway name
       name         = string # ip name
+      address = string #ip-address
     })
   )
   default = []
