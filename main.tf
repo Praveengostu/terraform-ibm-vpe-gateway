@@ -47,7 +47,7 @@ locals {
           subnet_id    = subnet.id
           gateway_name = service.vpe_name != null ? service.vpe_name : "${var.prefix}-${var.vpc_name}-${service.service_name != null ? service.service_name : element(split(":", service.crn), 4)}"
           name         = service.vpe_name != null ? "${service.vpe_name}-${replace(subnet.zone, "/${var.region}-/", "")}" : "${var.prefix}-${var.vpc_name}-${service.service_name != null ? service.service_name : element(split(":", service.crn), 4)}-${replace(subnet.zone, "/${var.region}-/", "")}"
-          address      = subnet.address
+          address      = lookup(subnet.vpe_ips, service.vpe_name, null)
         }
     ])
   ])
