@@ -34,7 +34,7 @@ variable "subnet_zone_list" {
       id      = string
       zone    = string
       cidr    = optional(string)
-      address = string
+      vpe_ips = optional(map(string))
     })
   )
   default = []
